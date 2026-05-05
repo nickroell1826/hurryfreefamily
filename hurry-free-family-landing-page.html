@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hurry Free Family — Guides for Every Season</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;0,900;1,300;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1614;
+    --cream: #FAF7F2;
+    --warm: #F2EBE0;
+    --gold: #C9A84C;
+    --terracotta: #C25B3F;
+    --sage: #4D7A6A;
+    --plum: #4A2D6B;
+    --slate: #2C3E50;
+    --desert: #8B6845;
+    --muted: #7A7268;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,22,20,0.92);
+    backdrop-filter: blur(12px);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .nav-brand em { color: var(--gold); font-style: italic; }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 28px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(74,45,107,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 30%, rgba(194,91,63,0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 30% 80%, rgba(77,122,106,0.1) 0%, transparent 40%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; font-weight: 300; }
+  .hero-desc {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.4); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.13); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.25);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    background: var(--warm);
+    padding: 80px 28px;
+    text-align: center;
+  }
+  .manifesto-inner { max-width: 680px; margin: 0 auto; }
+  .manifesto h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .manifesto h2 em { color: var(--terracotta); font-style: italic; }
+  .manifesto p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .manifesto p:last-child { margin-bottom: 0; }
+  .manifesto strong { color: var(--ink); font-weight: 700; }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    padding: 80px 28px;
+    background: var(--cream);
+  }
+  .how-inner { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 48px;
+  }
+  .section-title em { color: var(--terracotta); font-style: italic; }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .how-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px 22px;
+    box-shadow: 0 2px 20px rgba(26,22,20,0.06);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .how-card:hover { transform: translateY(-3px); }
+  .how-card .hc-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--warm);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .how-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .how-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* ── GUIDES ── */
+  .guides {
+    padding: 80px 28px;
+    background: var(--ink);
+  }
+  .guides-inner { max-width: 960px; margin: 0 auto; }
+  .guides .section-label { color: rgba(201,168,76,0.7); }
+  .guides .section-title { color: #fff; }
+  .guides .section-title em { color: var(--gold); }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .guide-card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .guide-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+
+  .guide-card-top {
+    padding: 28px 24px 24px;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .guide-season-tag {
+    position: absolute;
+    top: 18px; right: 18px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+  }
+  .guide-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .guide-card-top h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .guide-card-top h3 em { font-style: italic; font-weight: 300; }
+  .guide-tagline {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  .guide-card-bottom {
+    background: var(--white);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .guide-themes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .theme-chip {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 8px;
+    background: var(--warm);
+    color: var(--muted);
+  }
+  .guide-price {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  /* guide colors */
+  .g-reset .guide-card-top { background: linear-gradient(145deg, #2C3E50, #1A2A38); }
+  .g-lent .guide-card-top { background: linear-gradient(145deg, #3D2B4A, #241830); }
+  .g-summer .guide-card-top { background: linear-gradient(145deg, #5B9EC9, #2A6A9A); }
+  .g-hurry .guide-card-top { background: linear-gradient(145deg, #2D4A3E, #1A2E26); }
+  .g-present .guide-card-top { background: linear-gradient(145deg, #1B2A4A, #0E1A30); }
+  .g-rush .guide-card-top { background: linear-gradient(145deg, #2D4A3E, #3A2010); }
+  .g-advent .guide-card-top { background: linear-gradient(145deg, #1A1228, #2A1040); }
+
+  /* ── BUNDLE ── */
+  .bundle {
+    background: linear-gradient(135deg, var(--gold) 0%, #E8C060 50%, var(--gold) 100%);
+    padding: 72px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .bundle::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='0.03'%3E%3Cpath d='M20 20.5V18H0v5h5v5H0v5h20v-2.5zM15 45V20H0v5h5v5H0v5h5v5H0v5h15zM20 20.5V23H40v-5H35v-5h5V8H20v12.5z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .bundle-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+  .bundle-eyebrow {
+    display: inline-block;
+    background: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.6);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .bundle h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+  .bundle-desc {
+    font-size: 1rem;
+    color: rgba(26,22,20,0.65);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .bundle-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .bundle-was {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    color: rgba(26,22,20,0.35);
+    text-decoration: line-through;
+  }
+  .bundle-price {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .bundle-save {
+    background: var(--ink);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .bundle-includes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .bundle-chip {
+    background: rgba(0,0,0,0.08);
+    color: rgba(26,22,20,0.7);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+  .btn-bundle {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    letter-spacing: 0.3px;
+  }
+  .btn-bundle:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 80px 28px;
+    background: var(--warm);
+  }
+  .testimonials-inner { max-width: 900px; margin: 0 auto; }
+  .testimonials .section-title { margin-bottom: 40px; }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 2px 16px rgba(26,22,20,0.07);
+    position: relative;
+  }
+  .testi-quote {
+    font-size: 3rem;
+    font-family: 'Fraunces', serif;
+    color: var(--warm);
+    line-height: 0.8;
+    margin-bottom: 12px;
+  }
+  .testi-text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 16px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  .testi-name {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .testi-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 8px; }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 80px 28px;
+    background: var(--cream);
+  }
+  .faq-inner { max-width: 680px; margin: 0 auto; }
+  .faq .section-title { margin-bottom: 36px; }
+
+  .faq-item {
+    border-bottom: 1px solid #E5DDD0;
+    padding: 20px 0;
+  }
+  .faq-q {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    user-select: none;
+  }
+  .faq-q .fq-icon {
+    font-size: 1rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .faq-item.open .fq-icon { transform: rotate(45deg); }
+  .faq-a {
+    display: none;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 12px;
+    padding-right: 24px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: var(--ink);
+    padding: 100px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 50%, rgba(74,45,107,0.12) 0%, transparent 55%);
+  }
+  .final-inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; }
+  .final-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .final-cta h2 em { color: var(--gold); font-style: italic; }
+  .final-cta p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111;
+    padding: 32px 28px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.8;
+  }
+  footer strong { color: rgba(255,255,255,0.55); display: block; margin-bottom: 6px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero h1 { letter-spacing: -1px; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .bundle-price { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Hurry <em>Free</em> Family</div>
+  <a href="#bundle" class="nav-cta">Get the Library →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">🐢 Family Dinner Guides</div>
+    <h1>Slow down.<br><em>Together.</em></h1>
+    <p class="hero-desc">Seven faith-rooted dinner guides for Christian families — one for every season, one conversation at a time, all year long.</p>
+    <div class="hero-ctas">
+      <a href="#bundle" class="btn-primary">Get the Complete Library — $44</a>
+      <a href="#guides" class="btn-secondary">Browse the Guides</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-inner fade-up">
+    <h2>Your family is not too busy<br>to <em>slow down.</em></h2>
+    <p>We know what it feels like. The calendar fills up before you notice. Dinner lasts eight minutes. Everyone's tired. The kids are growing up fast and somehow you're watching it happen from a distance.</p>
+    <p>We made these guides because <strong>the dinner table is still the most powerful place in your home</strong> — if you'll protect it. One question. One candle. One habit. That's all it takes to start.</p>
+    <p>These guides don't ask you to be a different family. They ask you to show up at your table, ask a real question, and see what happens. Again and again, in every season, all year long.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="section-title fade-up">Simple enough for a <em>Tuesday night.</em></h2>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <div class="hc-num">01</div>
+        <h3>Pick your season</h3>
+        <p>Each guide is built for a specific time of year — so you're always starting with a guide that fits where your family actually is right now.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="hc-num">02</div>
+        <h3>Sit down to dinner</h3>
+        <p>No prep required. Pull up the guide on your phone, read the question out loud, and let your family talk. That's the whole method.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="hc-num">03</div>
+        <h3>Try the habit</h3>
+        <p>Each week includes one simple daily practice — something small enough to actually do, meaningful enough to actually stick.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="hc-num">04</div>
+        <h3>Do the challenge</h3>
+        <p>One family challenge per week — a game, an adventure, an act of service. These are the moments your kids will actually remember.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section class="guides" id="guides">
+  <div class="guides-inner">
+    <div class="section-label fade-up">The Library</div>
+    <h2 class="section-title fade-up">Seven guides. Every <em>season.</em></h2>
+
+    <div class="guide-grid">
+
+      <a href="#bundle" class="guide-card g-reset fade-up" style="transition-delay:0.05s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">January</span>
+          <div class="guide-icon">🔄</div>
+          <h3>The <em>Reset</em></h3>
+          <div class="guide-tagline">Rebuild, reconnect, and begin again</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Honesty</span>
+            <span class="theme-chip">Intention</span>
+            <span class="theme-chip">Reconnection</span>
+          </div>
+          <div class="guide-price">$9</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-lent fade-up" style="transition-delay:0.1s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Lent</span>
+          <div class="guide-icon">🏜️</div>
+          <h3>Into the <em>Desert</em></h3>
+          <div class="guide-tagline">Walking toward the cross together</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Wilderness</span>
+            <span class="theme-chip">Surrender</span>
+            <span class="theme-chip">Resurrection</span>
+          </div>
+          <div class="guide-price">$12</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-summer fade-up" style="transition-delay:0.15s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Summer</span>
+          <div class="guide-icon">☀️</div>
+          <h3>The Long <em>Days</em></h3>
+          <div class="guide-tagline">Present in the best season of the year</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Outside</span>
+            <span class="theme-chip">Boredom</span>
+            <span class="theme-chip">Gratitude</span>
+            <span class="theme-chip">Simplicity</span>
+          </div>
+          <div class="guide-price">$9</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-hurry fade-up" style="transition-delay:0.2s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Anytime</span>
+          <div class="guide-icon">🐢</div>
+          <h3>Hurry <em>Free</em> Family</h3>
+          <div class="guide-tagline">Slowing down when life speeds up</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Sabbath</span>
+            <span class="theme-chip">Simplicity</span>
+            <span class="theme-chip">Silence</span>
+          </div>
+          <div class="guide-price">$9</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-present fade-up" style="transition-delay:0.25s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Anytime</span>
+          <div class="guide-icon">📱</div>
+          <h3>The <em>Present</em> Family</h3>
+          <div class="guide-tagline">Raising kids who can look up</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Phones</span>
+            <span class="theme-chip">Attention</span>
+            <span class="theme-chip">Presence</span>
+          </div>
+          <div class="guide-price">$9</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-rush fade-up" style="transition-delay:0.3s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Back to School</span>
+          <div class="guide-icon">🍂</div>
+          <h3>Before the <em>Rush</em></h3>
+          <div class="guide-tagline">8 conversations before chaos begins</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Vision</span>
+            <span class="theme-chip">Rhythms</span>
+            <span class="theme-chip">Rest</span>
+          </div>
+          <div class="guide-price">$9</div>
+        </div>
+      </a>
+
+      <a href="#bundle" class="guide-card g-advent fade-up" style="transition-delay:0.35s">
+        <div class="guide-card-top">
+          <span class="guide-season-tag">Advent</span>
+          <div class="guide-icon">🕯️</div>
+          <h3>Come, Let Us <em>Wait</em></h3>
+          <div class="guide-tagline">Four weeks slowing down for Christmas</div>
+        </div>
+        <div class="guide-card-bottom">
+          <div class="guide-themes">
+            <span class="theme-chip">Hope</span>
+            <span class="theme-chip">Peace</span>
+            <span class="theme-chip">Joy</span>
+            <span class="theme-chip">Love</span>
+          </div>
+          <div class="guide-price">$12</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section class="bundle" id="bundle">
+  <div class="bundle-inner fade-up">
+    <div class="bundle-eyebrow">Best Value</div>
+    <h2>The Complete Library</h2>
+    <p class="bundle-desc">Every guide. Every season. One purchase. Your family covered all year long — from January's honest reset through spring, summer, fall, and December's candlelit Advent table.</p>
+    <div class="bundle-price-row">
+      <div class="bundle-was">$69</div>
+      <div class="bundle-price">$44</div>
+      <div class="bundle-save">Save $25</div>
+    </div>
+    <div class="bundle-includes">
+      <span class="bundle-chip">🔄 The Reset</span>
+      <span class="bundle-chip">🏜️ Into the Desert</span>
+      <span class="bundle-chip">☀️ The Long Days</span>
+      <span class="bundle-chip">🐢 Hurry Free Family</span>
+      <span class="bundle-chip">📱 The Present Family</span>
+      <span class="bundle-chip">🍂 Before the Rush</span>
+      <span class="bundle-chip">🕯️ Come, Let Us Wait</span>
+    </div>
+    <a href="https://gumroad.com/hurryfreefamily" target="_blank" class="btn-bundle">Get the Complete Library →</a>
+    <p style="font-size:0.76rem;color:rgba(26,22,20,0.5);margin-top:16px;font-weight:600;">Instant digital download · Works on any device · Print-friendly</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label fade-up">From Our Table to Yours</div>
+    <h2 class="section-title fade-up">What happened when we <em>actually tried it.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">We asked our kid at dinner: "Do you think Jesus ever hurried?" Long pause. Then: "No. Because he knew God was in control." I didn't have that answer. My child did.</p>
+        <div class="testi-name">[Name] · Our actual dinner table</div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.1s">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">We tried a screen-free afternoon. Someone flipped a board game by 2:15pm. By 4:30pm nobody wanted to come inside. The messy middle was real. But so was 4:30pm.</p>
+        <div class="testi-name">[Name] · Week 2 of Hurry Free Family</div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.2s">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">These guides are brand new. We're giving them to real families to try first. Want to be one of them? Grab Week 1 free below and tell us what happens at your table.</p>
+        <div class="testi-name">— [Name], founder of Hurry Free Family</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="/free" style="display:inline-block;background:var(--gold);color:var(--ink);font-weight:700;font-size:0.88rem;padding:14px 28px;border-radius:40px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);">Try Week 1 Free — Tell Us What Happens →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-label fade-up">Questions</div>
+    <h2 class="section-title fade-up">Everything you want to <em>know.</em></h2>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">What age kids are these guides for? <span class="fq-icon">+</span></div>
+      <div class="faq-a">The guides are designed for families with elementary and middle school kids. The questions and activities are written to be accessible at those ages while still being genuinely interesting for adults. Families with younger or older kids have used them successfully too — the conversations go wherever your family takes them.</div>
+    </div>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">How much time does each week take? <span class="fq-icon">+</span></div>
+      <div class="faq-a">The dinner conversation itself takes about 15–20 minutes. The daily habit is designed to take under 5 minutes. The family challenge is usually 30–60 minutes and happens once during the week at a time that works for you. You can do as much or as little as fits your family's season.</div>
+    </div>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">What format do I get? How do I access the guides? <span class="fq-icon">+</span></div>
+      <div class="faq-a">The guides are delivered as HTML files — they work beautifully on any phone, tablet, or computer. You can pull them up at the dinner table on your phone, or print them out if you prefer paper. They're designed to be readable in low light and easy to scroll through mid-conversation.</div>
+    </div>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I need to have read the books these are based on? <span class="fq-icon">+</span></div>
+      <div class="faq-a">Not at all. The guides stand completely on their own. Some of them were inspired by books (like Ruthless Elimination of Hurry and The Anxious Generation) but all the content is original — you don't need to have read anything to use them. We do recommend the books for parents who want to go deeper, but it's never required.</div>
+    </div>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">Can I use these at church or in a small group? <span class="fq-icon">+</span></div>
+      <div class="faq-a">The individual guides are licensed for personal and family use. If you're interested in using them with a church congregation, small group, or ministry, we offer church licensing — reach out to us directly to discuss. We'd love to get these into more families through your church.</div>
+    </div>
+
+    <div class="faq-item fade-up" onclick="toggleFaq(this)">
+      <div class="faq-q">What if my family misses a week? <span class="fq-icon">+</span></div>
+      <div class="faq-a">Pick it back up whenever you can. These guides are designed to be forgiving — missing a week doesn't break the experience. Some families do one guide over a longer stretch than intended. What matters is that you come back to the table. The guide will be there when you do.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-inner fade-up">
+    <h2>Your table is<br>waiting <em>for you.</em></h2>
+    <p>Every season has a guide. Every guide has a question. Every question is a chance to know your family a little better than you did yesterday. That's the whole thing. That's enough.</p>
+    <a href="#bundle" class="btn-primary">Start Tonight — $44 for Everything</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Hurry Free Family</strong>
+  Independent resources for Christian families. Not affiliated with or endorsed by any publisher or author. All guides are original works inspired by historic Christian tradition and contemporary faith practice. · <a href="#" style="color:rgba(255,255,255,0.4)">Privacy</a>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(item) {
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
